@@ -1,35 +1,43 @@
 {
-    "name" : "node-combinator",
-    "version" : "0.0.1",
-    "description" : "Find multiple concurrent <script> or <link> tags and turn 'em into single, combo-handled tags",
-    "preferGlobal" : true,
-    "author" : "Pat Cavit <pcavit@gmail.com",
-    "bugs" : "https://github.com/tivac/node-combinator/issues",
-    "bin": "./bin/cli.js",
-    "main" : "./lib/combinator.js",
+    "name"          : "node-combinator",
+    "version"       : "0.0.1",
+    "description"   : "Find multiple concurrent <script> or <link> tags and turn 'em into single, combo-handled tags",
+    "preferGlobal"  : true,
+    "author"        : "Pat Cavit <pcavit@gmail.com",
+    "bugs"          : "https://github.com/tivac/node-combinator/issues",
+    "bin"           : "./bin/cli.js",
+    "main"          : "./lib/combinator.js",
+    "license"       : "MIT",
+    
     "repository": {
-        "type": "git",
-        "url": "https://github.com/tivac/node-combinator.git"
+        "type" : "git",
+        "url"  : "https://github.com/tivac/node-combinator.git"
     },
+    
     "dependencies" : {
         "htmlparser" : "1.7.x",
         "wrench"     : "1.3.x",
-        "optimist"   : "0.3.x"
+        "optimist"   : "0.3.x",
+        "traverse"   : "0.6.x",
+        "async"      : "0.1.x"
     },
+    
     "devDependencies" : {
-        "mocha" : "1.7.x",
+        "mocha"  : "1.7.x",
         "should" : "1.2.x"
     },
-    "license": "MIT",
+    
     "engine": {
         "node": ">=0.8"
     },
+    
+    "scripts" : {
+        "test" : "mocha"
+    },
+    
     "keywords": [
         "html",
         "parsing",
         "webperf"
-    ],
-    "scripts" : {
-        "test" : "mocha"
-    }
+    ]
 }

@@ -6,7 +6,7 @@
 var fs   = require("fs"),
     path = require("path"),
     argv = require("optimist")
-            .usage("Update <script> tags to use combo URLs.\nUsage: $0 {{TODO}}")
+            .usage("Update <script> tags to use combo URLs.\nUsage: $0 -r .")
             .options(require("./args.json"))
             .argv,
 

@@ -5,21 +5,16 @@
         "description" : "Root directory to use"
     },
 
-    "quiet" : {
-        "alias"       : "q",
-        "description" : "Minimal output"
+    
+    "combo" : {
+        "alias"       : "c",
+        "description" : "Base combo prefix",
+        "default"     : "combo?"
     },
-
-    "suffix" : {
-        "alias"       : "s",
-        "description" : "Suffix to append to modified files",
-        "default"     : "-combo"
-    },
-
-    "filter" : {
-        "alias"       : "f",
-        "description" : "File-name filter (regex)",
-        "default"     : "."
+    
+    "encoding" : {
+        "description" : "Source file encoding",
+        "default"     : "utf8"
     },
 
     "extension" : {
@@ -28,8 +23,31 @@
         "default"     : "html"
     },
 
-    "encoding" : {
-        "description" : "Source file encoding",
-        "default"     : "utf8"
+    "filter" : {
+        "alias"       : "f",
+        "description" : "File-name filter (regex)",
+        "default"     : "."
+    },
+    
+    "quiet" : {
+        "alias"       : "q",
+        "description" : "Minimal output"
+    },
+    
+    "recurse" : {
+        "description" : "Search directories recursively",
+        "default"     : true,
+        "boolean"     : true
+    },
+    
+    "separator" : {
+        "description" : "String used to split combo files",
+        "default"     : "&"
+    },
+
+    "suffix" : {
+        "alias"       : "s",
+        "description" : "Suffix to append to modified files",
+        "default"     : "-combo"
     }
 }
