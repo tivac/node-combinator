@@ -10,6 +10,13 @@ Console script to find repeated &lt;script&gt; or &lt;link&gt; elements and stre
 ## Usage ##
 
     node-combinator -r tests\data
+    
+## Programmatic Usage ##
+
+    var Combinator = require("combinator"),
+        combinator = new Combinator({ root : "." });
+        
+    combinator.run();
 
 ## Development ##
 
