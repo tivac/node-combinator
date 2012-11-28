@@ -4,18 +4,18 @@
         "alias"       : "r",
         "description" : "Root directory to use"
     },
-    
+
     "quiet" : {
         "alias"       : "q",
         "description" : "Minimal output"
     },
-    
+
     "suffix" : {
         "alias"       : "s",
         "description" : "Suffix to append to modified files",
         "default"     : "-combo"
     },
-    
+
     "filter" : {
         "alias"       : "f",
         "description" : "File-name filter (regex)",
