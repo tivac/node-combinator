@@ -23,8 +23,13 @@
     },
 
     "extension" : {
-        "alias" : "e",
+        "alias"       : "e",
         "description" : "Filter files by extension",
-        "default" : "html"
+        "default"     : "html"
+    },
+
+    "encoding" : {
+        "description" : "Source file encoding",
+        "default"     : "utf8"
     }
 }

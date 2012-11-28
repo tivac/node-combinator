@@ -22,7 +22,7 @@ _save = function(output) {
 };
 
 if(argv.output) {
-    save(output);
+    _save(output);
 } else {
     console.log(output);
 }
