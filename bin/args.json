@@ -1,10 +1,19 @@
 {
+    "help" : {
+        "alias"       : "h",
+        "description" : "Display usage information"
+    },
+    
     "root" : {
         "demand"      : true,
         "alias"       : "r",
         "description" : "Root directory to use"
     },
-
+    
+    "quiet" : {
+        "alias"       : "q",
+        "description" : "Minimal output"
+    },
 
     "combo" : {
         "alias"       : "c",
@@ -23,17 +32,18 @@
         "default"     : "html"
     },
 
-    "filter" : {
+    "file-filter" : {
         "alias"       : "f",
         "description" : "File-name filter (regex)",
-        "default"     : false
+        "default"     : "."
     },
-
-    "quiet" : {
-        "alias"       : "q",
-        "description" : "Minimal output"
+    
+    "output" : {
+        "alias"       : "o",
+        "description" : "Location to save modified files to",
+        "default"     : "root"
     },
-
+    
     "recurse" : {
         "description" : "Search directories recursively",
         "default"     : true,
@@ -46,8 +56,12 @@
     },
 
     "suffix" : {
-        "alias"       : "s",
         "description" : "Suffix to append to modified files",
         "default"     : "-combo"
+    },
+    
+    "url-filter" : {
+        "description" : "Filter which elements are included (regex)",
+        "default"     : "."
     }
 }
