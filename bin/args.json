@@ -5,13 +5,13 @@
         "description" : "Root directory to use"
     },
 
-    
+
     "combo" : {
         "alias"       : "c",
         "description" : "Base combo prefix",
         "default"     : "combo?"
     },
-    
+
     "encoding" : {
         "description" : "Source file encoding",
         "default"     : "utf8"
@@ -26,20 +26,20 @@
     "filter" : {
         "alias"       : "f",
         "description" : "File-name filter (regex)",
-        "default"     : "."
+        "default"     : false
     },
-    
+
     "quiet" : {
         "alias"       : "q",
         "description" : "Minimal output"
     },
-    
+
     "recurse" : {
         "description" : "Search directories recursively",
         "default"     : true,
         "boolean"     : true
     },
-    
+
     "separator" : {
         "description" : "String used to split combo files",
         "default"     : "&"
