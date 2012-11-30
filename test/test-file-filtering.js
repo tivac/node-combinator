@@ -1,3 +1,5 @@
+/*jshint node:true */
+
 var should     = require("should"),
     Combinator = require("../lib/combinator.js");
 

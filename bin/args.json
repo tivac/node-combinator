@@ -41,7 +41,7 @@
     "output" : {
         "alias"       : "o",
         "description" : "Location to save modified files to",
-        "default"     : "root"
+        "default"     : false
     },
     
     "recurse" : {
