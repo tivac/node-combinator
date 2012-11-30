@@ -14,7 +14,14 @@ Console script to find repeated &lt;script&gt; or &lt;link&gt; elements and stre
 ## Programmatic Usage ##
 
     var Combinator = require("combinator"),
-        combinator = new Combinator({ root : "." });
+        combinator = new Combinator({
+            root : ".",
+            ...
+            /*
+             * you'll probably want to manually pass optimist your desired args & then
+             * have it parse args.json so all the defaults are sane. I'll fix that later I geuss.
+             */
+        });
         
     combinator.run();
 
