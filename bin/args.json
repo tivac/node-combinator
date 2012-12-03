@@ -18,7 +18,7 @@
     "combo" : {
         "alias"       : "c",
         "description" : "Base combo prefix",
-        "default"     : "combo?"
+        "default"     : "/combo?"
     },
 
     "encoding" : {
