@@ -5,9 +5,8 @@
     },
     
     "root" : {
-        "demand"      : true,
         "alias"       : "r",
-        "description" : "Root directory to use"
+        "description" : "Root directory to search for files"
     },
     
     "quiet" : {

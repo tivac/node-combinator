@@ -7,22 +7,63 @@ var fs         = require("fs"),
     util       = require("util"),
     path       = require("path"),
     mkdirp     = require('mkdirp'),
+    htmlparser = require("htmlparser"),
     Combinator = require("../lib/combinator.js"),
     optimist   = require("optimist")
-        .usage("\nCombine multiple <script> & <link> tags into single combo-handled tags.\nUsage: $0 -r .")
+        .usage("\nCombine multiple <script> & <link> tags into single combo-handled tags.\nUsage: $0")
         .options(require("./args.json")),
     
-    _argv = optimist.argv;
+    _argv = optimist.argv,
+
+    _stdin, _done;
 
 if(_argv.help) {
     return optimist.showHelp();
 }
 
-(new Combinator(_argv)).run(function(error, results) {
+_stdin = function() {
+    var _text = "",
+        _parser;
+
+    _parser = new htmlparser.Parser(
+        new htmlparser.DefaultHandler(function(error, dom) {
+            var combinator;
+
+            if (error) {
+                console.error(util.inspect(error, null, null, true));
+                process.exit(1);
+            }
+
+            combinator = new Combinator(_argv);
+            combinator.files = [ {
+                file  : "stdin",
+                text  : _text,
+                dom   : dom
+            } ];
+            combinator.run(_done);
+        })
+    );
+
+    process.stdin.resume();
+    process.stdin.setEncoding('utf8');
+
+    process.stdin.on("data", function(data) {
+        _parser.parseChunk(data);
+        
+        _text += data;
+    });
+
+    process.stdin.on("end", function() {
+        _parser.done();
+    });
+};
+
+_done = function(error, results) {
     var output;
     
     if(error) {
-        return console.error(util.inspect(error, null, null, true));
+        console.error(util.inspect(error, null, null, true));
+        process.exit(1);
     }
     
     if(!_argv.output) {
@@ -53,8 +94,10 @@ if(_argv.help) {
             }
         });
     });
-});
+};
 
+if(!_argv.root) {
+    return _stdin();
+}
 
-
-
+(new Combinator(_argv)).run(_done);
