@@ -11,7 +11,7 @@ var fs         = require("fs"),
     Combinator = require("../lib/combinator.js"),
     optimist   = require("optimist")
         .usage("\nCombine multiple <script> & <link> tags into single combo-handled tags.\nUsage: $0")
-        .options(require("./args.json")),
+        .options(require("../args.json")),
     
     _argv = optimist.argv,
 
@@ -97,6 +97,8 @@ _done = function(error, results) {
 };
 
 if(!_argv.root) {
+    !_argv.quiet && console.log("No root, waiting for input");
+    
     return _stdin();
 }
 
