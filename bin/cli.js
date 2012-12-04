@@ -6,7 +6,7 @@
 var fs         = require("fs"),
     util       = require("util"),
     path       = require("path"),
-    mkdirp     = require('mkdirp'),
+    mkdirp     = require("mkdirp"),
     htmlparser = require("htmlparser"),
     Combinator = require("../lib/combinator.js"),
     optimist   = require("optimist")
@@ -15,11 +15,19 @@ var fs         = require("fs"),
     
     _argv = optimist.argv,
 
-    _stdin, _done;
+    _stdin, _done, _log;
 
 if(_argv.help) {
     return optimist.showHelp();
 }
+
+_log = function(string) {
+    if(_argv.quiet) {
+        return;
+    }
+    
+    console.log(string);
+};
 
 _stdin = function() {
     var _text = "",
@@ -45,7 +53,7 @@ _stdin = function() {
     );
 
     process.stdin.resume();
-    process.stdin.setEncoding('utf8');
+    process.stdin.setEncoding("utf8");
 
     process.stdin.on("data", function(data) {
         _parser.parseChunk(data);
@@ -59,7 +67,7 @@ _stdin = function() {
 };
 
 _done = function(error, results) {
-    var output;
+    var root, output;
     
     if(error) {
         console.error(util.inspect(error, null, null, true));
@@ -70,20 +78,26 @@ _done = function(error, results) {
         return console.log(util.inspect(results, null, null, true));
     }
     
+    root   = path.normalize(_argv.root);
     output = path.resolve(_argv.output);
     
     mkdirp.sync(output);
     
     results.forEach(function(details) {
-        var file = path.join(output, details.file),
-            ext  = path.extname(file),
-            dir;
+        var file = path.normalize(details.file),
+            ext  = path.extname(file);
         
         if(!details.text) {
             return;
         }
         
+        //strip root from new file name
+        file = path.join(output, file.replace(root, ""));
+        
+        //append suffix (may not exist)
         file = file.replace(ext, _argv.suffix + ext);
+        
+        _log("Saving " + file);
         
         mkdirp.sync(path.dirname(file));
         
@@ -97,7 +111,7 @@ _done = function(error, results) {
 };
 
 if(!_argv.root) {
-    !_argv.quiet && console.log("No root, waiting for input");
+    _log("No root, waiting for input");
     
     return _stdin();
 }
