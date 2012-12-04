@@ -6,35 +6,42 @@
     
     "root" : {
         "alias"       : "r",
-        "description" : "Root directory to search for files"
+        "description" : "Root directory to search for files",
+        "string"      : true
     },
     
     "quiet" : {
         "alias"       : "q",
-        "description" : "Minimal output"
+        "description" : "Minimal output",
+        "default"     : false,
+        "boolean"     : true
     },
 
     "combo" : {
         "alias"       : "c",
         "description" : "Base combo prefix",
-        "default"     : "/combo?"
+        "default"     : "/combo?",
+        "string"      : true
     },
 
     "encoding" : {
         "description" : "Source file encoding",
-        "default"     : "utf8"
+        "default"     : "utf8",
+        "string"      : true
     },
 
     "extension" : {
         "alias"       : "e",
         "description" : "Filter files by extension",
-        "default"     : "html"
+        "default"     : "html",
+        "string"      : true
     },
 
     "file-filter" : {
         "alias"       : "f",
         "description" : "File-name filter (regex)",
-        "default"     : "."
+        "default"     : ".",
+        "string"      : true
     },
     
     "output" : {
@@ -51,16 +58,19 @@
 
     "separator" : {
         "description" : "String used to split combo files",
-        "default"     : "&"
+        "default"     : "&",
+        "string"      : true
     },
 
     "suffix" : {
         "description" : "Suffix to append to modified files",
-        "default"     : "-combo"
+        "default"     : "-combo",
+        "string"      : true
     },
     
     "url-filter" : {
         "description" : "Filter which elements are included (regex)",
-        "default"     : "."
+        "default"     : ".",
+        "string"      : true
     }
 }
