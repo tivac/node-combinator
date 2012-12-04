@@ -7,10 +7,6 @@ var fs         = require("fs"),
     assert     = require("assert"),
     traverse   = require("traverse"),
     htmlparser = require("htmlparser"),
-    defaults   = require("optimist")
-        ([ "-r", "test/html" ])
-        .options(require("../bin/args.json"))
-        .argv,
     Combinator = require("../lib/combinator.js");
 
 describe("Combinator", function() {
@@ -27,7 +23,7 @@ describe("Combinator", function() {
             
             parser.parseComplete(fs.readFileSync("./test/html/simple.html", "utf8"));
             
-            combinator = new Combinator(defaults);
+            combinator = new Combinator(Combinator.defaults());
             
             paths = combinator._findNodes(handler.dom);
             
@@ -42,7 +38,7 @@ describe("Combinator", function() {
             
             parser.parseComplete(fs.readFileSync("./test/html/invalid-link.html", "utf8"));
             
-            combinator = new Combinator(defaults);
+            combinator = new Combinator(Combinator.defaults());
             
             paths = combinator._findNodes(handler.dom);
             tdom  = traverse(handler.dom);
@@ -62,7 +58,7 @@ describe("Combinator", function() {
             
             parser.parseComplete(fs.readFileSync("./test/html/invalid-script.html", "utf8"));
             
-            combinator = new Combinator(defaults);
+            combinator = new Combinator(Combinator.defaults());
             
             paths = combinator._findNodes(handler.dom);
             tdom  = traverse(handler.dom);
