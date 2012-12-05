@@ -3,14 +3,14 @@
 "use strict";
 
 var fs         = require("fs"),
-    htmlparser = require("htmlparser");
+    htmlparser = require("htmlparser2");
 
 module.exports = {
     //return a files object like cli.js
     files : function(file) {
         var _text = fs.readFileSync(file, "utf8"),
             _parser = new htmlparser.Parser(
-                new htmlparser.DefaultHandler(function(error, dom) {
+                new htmlparser.DomHandler(function(error, dom) {
                     if(error) {
                         throw error;
                     }
