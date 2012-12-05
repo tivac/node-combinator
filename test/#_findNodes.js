@@ -64,15 +64,13 @@ describe("Combinator", function() {
             });
         });
         
-        it.only("should respect the url-filter setting", function() {
+        it("should respect the url-filter setting", function() {
             var tdom, paths;
             
             parser.parseComplete(fs.readFileSync("./test/html/domains.html", "utf8"));
             
             combinator = new Combinator(Combinator.defaults({ "url-filter" : "nooga\\.com" }));
             paths = combinator._findNodes(handler.dom);
-            
-            console.log(paths); //TODO: REMOVE DEBUGGING
             
             tdom  = traverse(handler.dom);
             
