@@ -1,0 +1,79 @@
+<% var session = (_o.user_id || (_o.user && _o.user.id)); %>
+<!DOCTYPE html>
+<!--[if IE 8]><html lang="<%= I18n.lang %>" class="lt-ie9 no-js"><![endif]-->
+<!--[if gt IE 8]><!--><html lang="<%= I18n.lang %>" class="no-js"><!--<![endif]-->
+<head>
+    <title><%= I18n.account.header.title %></title>
+    <meta charset="utf-8">
+    <script>document.documentElement.className=document.documentElement.className.replace(/(\s|^)no-js(\s|$)/,"$1js$2");</script>
+    
+    <link rel="stylesheet" type="text/css" href="//origin-static.ncplatform.net/yui/3.5.0/cssreset/reset-min.css" />
+    <link rel="stylesheet" type="text/css" href="//origin-static.ncplatform.net/yui/3.5.0/cssfonts/fonts-min.css" />
+    <link rel="stylesheet" type="text/css" href="//origin-static.ncplatform.net/yui/3.5.0/cssgrids/grids-min.css" />
+    <link rel="stylesheet" type="text/css" href="//origin-static.ncplatform.net/yui/3.5.0/cssbutton/cssbutton-min.css" />
+    <link rel="stylesheet" type="text/css" href="//origin-static.ncplatform.net/fonts/cronos/v1/cronos-regular-min.css" />
+    <link rel="stylesheet" type="text/css" href="//origin-static.ncplatform.net/fonts/cronos/v1/cronos-bold-min.css" />
+    <link rel="stylesheet" type="text/css" href="//origin-static.ncplatform.net/fonts/cronos/v1/cronos-italic-min.css" />
+    <link rel="stylesheet" type="text/css" href="//origin-static.ncplatform.net/fonts/cronos/v1/cronos-bolditalic-min.css" />
+    <link rel="stylesheet" type="text/css" href="//origin-static.ncplatform.net/fonts/eason/v1/eason-regular-min.css" />
+    <link rel="stylesheet" type="text/css" href="//origin-static.ncplatform.net/fonts/eason/v1/eason-italic-min.css" />
+    <link rel="stylesheet" type="text/css" href="//origin-static.ncplatform.net/fonts/eason/v1/eason-bold-min.css" />
+
+    <link rel="stylesheet" type="text/css" href="http://cdn.local.ncplatform.net/css/account.1542025970.css">
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="main-hd">
+        <div class="page-width">
+            <h1>
+                <a class="hide-txt" href="<%- I18n.account.header.logo.url %>" title="GuildWars2.com" rel="home">GuildWars2.com</a>
+            </h1>
+            
+            <ul id="menu-external-nav" class="yui3-g external serif">
+                <li class="yui3-u menu-item menu-item-14">
+                    <a class="relatedlink" href="<%- I18n.account.header.nav.gameinfo.url %>">
+                        GW2.com
+                    </a>
+                </li>
+                <li class="yui3-u menu-item menu-item-15">
+                    <a class="relatedlink" href="<%- JS.options.forumUrl %>">
+                        <%= I18n.account.header.nav.forum.link %>
+                    </a>
+                </li>
+            </ul>
+            <% if(session) { %>
+            <div class="character">
+                <ul>
+                    <li>
+                        <a href="/logout"><%= I18n.account.header.logout %></a> |
+                    </li>
+                    <li>
+                        <a href="/"><%= I18n.account.header.account %></a>
+                    </li>
+                </ul>
+                <p class="char-name"><%= user.name %></p>
+            </div>
+            <% } %>
+        </div>
+    </div>
+
+    <% if(_o.reason && _o.template_meta.view !== "login" && _o.template_meta.view !== "account") { %>
+        <h3 class="debugerror"><%= I18n.account.error.invalidinfo %></h3>
+        
+        <hr />
+    <% } %>
+
+    <% if(_o.pwchanged) { %>
+        <h3 class="success"><%- I18n.account.result.pwchanged %></h3>
+        <hr />
+    <% } else if (_o.accountchanged) { %>
+        <h3 class="success"><%- I18n.account.result.accountchanged %> <%= _o.accountchanged %><h3>
+    <% } %>
+
+    <div class="page page-width tk-cronos-pro <%= template_meta.view.replace(/\./g, "_") %>-page">
+        <div class="yui3-g page-padding">
+            <% session && _i("_sidebar") %>
+
+            <div id="content" class="yui3-u<%= session ? " yui3-u-m" : "" %>">
+<% _o.yui = []; %>
