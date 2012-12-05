@@ -19,6 +19,7 @@ describe("Combinator", function() {
             combinator = new Combinator(Combinator.defaults({ files : files }));
             
             paths = combinator._findNodes(files[0].dom);
+            
             groups = {
                 js  : combinator._groupNodes(paths.js,  files[0].dom),
                 css : combinator._groupNodes(paths.css, files[0].dom)
