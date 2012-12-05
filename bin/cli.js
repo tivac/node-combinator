@@ -7,7 +7,7 @@ var fs         = require("fs"),
     util       = require("util"),
     path       = require("path"),
     mkdirp     = require("mkdirp"),
-    htmlparser = require("htmlparser"),
+    htmlparser = require("htmlparser2"),
     Combinator = require("../lib/combinator.js"),
     optimist   = require("optimist")
         .usage("\nCombine multiple <script> & <link> tags into single combo-handled tags.\nUsage: $0")
@@ -34,7 +34,7 @@ _stdin = function() {
         _parser;
 
     _parser = new htmlparser.Parser(
-        new htmlparser.DefaultHandler(function(error, dom) {
+        new htmlparser.DomHandler(function(error, dom) {
             var combinator;
 
             if (error) {
