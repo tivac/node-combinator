@@ -6,7 +6,7 @@
 var fs         = require("fs"),
     assert     = require("assert"),
     traverse   = require("traverse"),
-    htmlparser = require("htmlparser"),
+    htmlparser = require("htmlparser2"),
     Combinator = require("../lib/combinator.js");
 
 describe("Combinator", function() {
@@ -20,7 +20,7 @@ describe("Combinator", function() {
         };
         
         before(function() {
-            handler = new htmlparser.DefaultHandler(),
+            handler = new htmlparser.DomHandler(),
             parser  = new htmlparser.Parser(handler);
             
             combinator = new Combinator(Combinator.defaults());
@@ -59,7 +59,7 @@ describe("Combinator", function() {
                 var node = tdom.get(path);
                 
                 assert(node.attribs.src);
-                assert(!node.children);
+                assert(!node.children.length);
                 assert.equal(node.attribs.type, "text/javascript");
             });
         });
@@ -80,7 +80,7 @@ describe("Combinator", function() {
                 var node = tdom.get(path);
                 
                 assert(node.attribs.href);
-                assert(!node.children);
+                assert(!node.children.length);
                 assert.equal(node.attribs.type, "text/css");
                 assert(node.attribs.href.indexOf("nooga.com") > -1);
             });
