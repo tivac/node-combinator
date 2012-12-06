@@ -7,10 +7,10 @@ var assert     = require("assert"),
     Combinator = require("../lib/combinator.js");
 
 describe("Combinator", function() {
-    describe("#findFilePaths", function() {
+    describe("#_findFilePaths", function() {
         it("should find matching files in the root directory", function() {
             var combinator = new Combinator(Combinator.defaults({ root : "test/html" })),
-                paths = combinator.findFilePaths();
+                paths = combinator._findFilePaths();
 
             assert(paths);
             assert(paths.length);
@@ -20,7 +20,7 @@ describe("Combinator", function() {
         it("should find files in subdirectories", function() {
             var combinator = new Combinator(Combinator.defaults({ root : "test/html" }));
 
-            assert(combinator.findFilePaths().indexOf("test\\html\\sub\\sub.html") > -1);
+            assert(combinator._findFilePaths().indexOf("test\\html\\sub\\sub.html") > -1);
         });
         
         
@@ -34,7 +34,7 @@ describe("Combinator", function() {
                         "file-filter" : "ignore"
                     })
                 ),
-                paths = combinator.findFilePaths();
+                paths = combinator._findFilePaths();
             
             assert(paths.length === 1);
             assert.strictEqual(paths[0], "test\\html\\ignore.html");
@@ -47,11 +47,13 @@ describe("Combinator", function() {
                         extension : "ejs"
                     })
                 ),
-                paths = combinator.findFilePaths();
+                paths = combinator._findFilePaths(),
+                testRegex = /\.ejs$/;
                 
-            
-            assert(paths.length === 1);
-            assert.strictEqual(paths[0], "test\\ejs\\domains.ejs");
+            assert(paths.length);
+            assert(paths.every(function(path) {
+                return testRegex.test(path);
+            }));
         });
     });
 });

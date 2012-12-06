@@ -25,7 +25,8 @@
     },
     
     "devDependencies" : {
-        "mocha"  : "1.7.x"
+        "mocha"    : "1.7.x",
+        "istanbul" : "0.1.x"
     },
     
     "engine": {
@@ -33,7 +34,7 @@
     },
     
     "scripts" : {
-        "test" : "mocha"
+        "test" : "istanbul test ./node_modules/mocha/bin/_mocha"
     },
     
     "keywords": [
