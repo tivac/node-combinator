@@ -1,5 +1,5 @@
 /*jshint node:true */
-/*global describe, before, it */
+/*global describe, it, before, after */
 
 "use strict";
 
@@ -27,7 +27,7 @@ describe("Combinator", function() {
         });
         
         it("should find <link> & <script> elements", function() {
-            var paths = _paths("./test/html/simple.html");
+            var paths = _paths("./test/_specimens/html/simple.html");
             
             assert(paths.js);
             assert(paths.css);
@@ -36,7 +36,7 @@ describe("Combinator", function() {
         });
         
         it("should find only valid <link> elements", function() {
-            var paths = _paths("./test/html/invalid-link.html"),
+            var paths = _paths("./test/_specimens/html/invalid-link.html"),
                 tdom  = traverse(handler.dom);
             
             assert.equal(paths.css.length, 2);
@@ -50,7 +50,7 @@ describe("Combinator", function() {
         });
         
         it("should find only valid <script> elements", function() {
-            var paths = _paths("./test/html/invalid-script.html"),
+            var paths = _paths("./test/_specimens/html/invalid-script.html"),
                 tdom  = traverse(handler.dom);
             
             assert.equal(paths.js.length, 2);
@@ -67,7 +67,7 @@ describe("Combinator", function() {
         it("should respect the url-filter setting", function() {
             var tdom, paths;
             
-            parser.parseComplete(fs.readFileSync("./test/html/domains.html", "utf8"));
+            parser.parseComplete(fs.readFileSync("./test/_specimens/html/domains.html", "utf8"));
             
             combinator = new Combinator(Combinator.defaults({ "url-filter" : "nooga\\.com" }));
             paths = combinator._findNodes(handler.dom);

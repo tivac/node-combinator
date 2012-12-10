@@ -3,6 +3,7 @@
 "use strict";
 
 var fs         = require("fs"),
+    wrench     = require("wrench"),
     htmlparser = require("htmlparser2");
 
 module.exports = {
@@ -27,5 +28,13 @@ module.exports = {
             text  : _text,
             dom   : _dom
         } ];
+    },
+    
+    setupSpecimens : function() {
+        wrench.copyDirSyncRecursive("./test/_specimens", "./test/specimens");
+    },
+    
+    removeSpecimens : function() {
+        wrench.rmdirSyncRecursive("./test/specimens");
     }
 };
