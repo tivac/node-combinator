@@ -78,13 +78,13 @@ _done = function(error, results) {
         return console.log(JSON.stringify(results, null, 4));
     }
     
-    root   = path.normalize(_argv.root);
+    root   = path.resolve(_argv.root);
     output = path.resolve(_argv.output);
     
     mkdirp.sync(output);
     
     results.forEach(function(details) {
-        var file = path.normalize(details.file),
+        var file = path.resolve(details.file),
             ext  = path.extname(file);
         
         if(!details.text) {
