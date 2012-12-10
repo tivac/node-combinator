@@ -11,7 +11,7 @@ var assert = require("assert"),
 
 describe("Combinator", function() {
     describe("#_groupNodes", function() {
-        var files = _lib.files("./test/html/domains.html"),
+        var files = _lib.files("./test/_specimens/html/domains.html"),
             combinator, paths, groups;
         
         //all of these tests use the same HTML

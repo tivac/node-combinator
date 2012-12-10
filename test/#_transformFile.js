@@ -1,5 +1,5 @@
 /*jshint node:true */
-/*global describe, before, it */
+/*global describe, it, before, after */
 
 "use strict";
 
@@ -13,7 +13,11 @@ describe("Combinator", function() {
     describe("#_transformFile", function() {
         
         it("should update simple css <link> elements", function(done) {
-            var combinator = new Combinator(Combinator.defaults({ files : _lib.files("./test/html/#transformFile-simple.html") }));
+            var combinator = new Combinator(
+                    Combinator.defaults({
+                        files : _lib.files("./test/_specimens/html/#transformFile-simple.html")
+                    })
+                );
             
             combinator.run(function(error, results) {
                 var text = results[0].text;
@@ -25,7 +29,11 @@ describe("Combinator", function() {
         });
         
         it("should remove old <link> elements", function(done) {
-            var combinator = new Combinator(Combinator.defaults({ files : _lib.files("./test/html/#transformFile-simple.html") }));
+            var combinator = new Combinator(
+                    Combinator.defaults({
+                        files : _lib.files("./test/_specimens/html/#transformFile-simple.html")
+                    })
+                );
             
             combinator.run(function(error, results) {
                 var text = results[0].text;
@@ -38,7 +46,11 @@ describe("Combinator", function() {
         });
         
         it("should update simple js <script> elements", function(done) {
-            var combinator = new Combinator(Combinator.defaults({ files : _lib.files("./test/html/#transformFile-simple.html") }));
+            var combinator = new Combinator(
+                    Combinator.defaults({
+                        files : _lib.files("./test/_specimens/html/#transformFile-simple.html")
+                    })
+                );
             
             combinator.run(function(error, results) {
                 var text = results[0].text;
@@ -49,7 +61,11 @@ describe("Combinator", function() {
         });
         
         it("should remove old <script> elements", function(done) {
-            var combinator = new Combinator(Combinator.defaults({ files : _lib.files("./test/html/#transformFile-simple.html") }));
+            var combinator = new Combinator(
+                    Combinator.defaults({
+                        files : _lib.files("./test/_specimens/html/#transformFile-simple.html")
+                    })
+                );
             
             combinator.run(function(error, results) {
                 var text = results[0].text;
@@ -62,7 +78,11 @@ describe("Combinator", function() {
         });
         
         it("should strip existing combo prefixes from <link>s", function(done) {
-            var combinator = new Combinator(Combinator.defaults({ files : _lib.files("./test/html/#transformFile-prefix.html") }));
+            var combinator = new Combinator(
+                    Combinator.defaults({
+                        files : _lib.files("./test/_specimens/html/#transformFile-prefix.html")
+                    })
+                );
             
             combinator.run(function(error, results) {
                 var text = results[0].text;
@@ -73,7 +93,11 @@ describe("Combinator", function() {
         });
         
         it("should strip existing combo prefixes from <script>s", function(done) {
-            var combinator = new Combinator(Combinator.defaults({ files : _lib.files("./test/html/#transformFile-prefix.html") }));
+            var combinator = new Combinator(
+                    Combinator.defaults({
+                        files : _lib.files("./test/_specimens/html/#transformFile-prefix.html")
+                    })
+                );
             
             combinator.run(function(error, results) {
                 var text = results[0].text;
