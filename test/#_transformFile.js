@@ -60,5 +60,27 @@ describe("Combinator", function() {
                 done();
             });
         });
+        
+        it("should strip existing combo prefixes from <link>s", function(done) {
+            var combinator = new Combinator(Combinator.defaults({ files : _lib.files("./test/html/#transformFile-prefix.html") }));
+            
+            combinator.run(function(error, results) {
+                var text = results[0].text;
+                
+                assert(text.indexOf("<link rel=\"stylesheet\" href=\"/combo?fooga.css&booga.css&wooga.css\">") > -1);
+                done();
+            });
+        });
+        
+        it("should strip existing combo prefixes from <script>s", function(done) {
+            var combinator = new Combinator(Combinator.defaults({ files : _lib.files("./test/html/#transformFile-prefix.html") }));
+            
+            combinator.run(function(error, results) {
+                var text = results[0].text;
+                
+                assert(text.indexOf("<script src=\"/combo?fooga.js&booga.js&wooga.js\"></script>") > -1);
+                done();
+            });
+        });
     });
 });
