@@ -75,7 +75,7 @@ _done = function(error, results) {
     }
     
     if(!_argv.output) {
-        return console.log(util.inspect(results, null, null, true));
+        return console.log(JSON.stringify(results, null, 4));
     }
     
     root   = path.normalize(_argv.root);

@@ -9,7 +9,11 @@ var assert     = require("assert"),
 describe("Combinator", function() {
     describe("#_findFilePaths", function() {
         it("should find matching files in the root directory", function() {
-            var combinator = new Combinator(Combinator.defaults({ root : "test/html" })),
+            var combinator = new Combinator(
+                    Combinator.defaults({
+                        root : "./test/_specimens/html"
+                    })
+                ),
                 paths = combinator._findFilePaths();
 
             assert(paths);
@@ -18,9 +22,13 @@ describe("Combinator", function() {
         });
 
         it("should find files in subdirectories", function() {
-            var combinator = new Combinator(Combinator.defaults({ root : "test/html" }));
+            var combinator = new Combinator(
+                    Combinator.defaults({
+                        root : "./test/_specimens/html"
+                    })
+                );
 
-            assert(combinator._findFilePaths().indexOf("test\\html\\sub\\sub.html") > -1);
+            assert(combinator._findFilePaths().indexOf("test\\_specimens\\html\\sub\\sub.html") > -1);
         });
         
         
@@ -30,20 +38,20 @@ describe("Combinator", function() {
         it("should only find files matching the filter", function() {
             var combinator = new Combinator(
                     Combinator.defaults({
-                        root : "test/html",
+                        root : "./test/_specimens/html",
                         "file-filter" : "ignore"
                     })
                 ),
                 paths = combinator._findFilePaths();
             
             assert(paths.length === 1);
-            assert.strictEqual(paths[0], "test\\html\\ignore.html");
+            assert.strictEqual(paths[0], "test\\_specimens\\html\\ignore.html");
         });
         
         it("should only find files matching the extension filter", function() {
              var combinator = new Combinator(
                     Combinator.defaults({
-                        root : "test/ejs",
+                        root : "./test/_specimens/ejs",
                         extension : "ejs"
                     })
                 ),
