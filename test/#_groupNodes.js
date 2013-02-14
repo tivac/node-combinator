@@ -44,15 +44,14 @@ describe("Combinator", function() {
             assert(groups.css["2/children"].paths.indexOf(3) > -1);
             assert(groups.css["2/children"].paths.indexOf(5) > -1);
             
-            assert(groups.js["4/children"].paths.indexOf(3) > -1);
+            assert(groups.js["4/children"].paths.indexOf(7) > -1);
             assert(groups.js["4/children"].paths.indexOf(9) > -1);
         });
         
         it("should not group elements separated by anything else", function() {
             assert.equal(groups.css["2/children"].paths.indexOf(7), -1);
             
-            assert.equal(groups.js["4/children"].paths.indexOf(5), -1);
-            assert.equal(groups.js["4/children"].paths.indexOf(7), -1);
+            assert.equal(groups.js["4/children"].paths.indexOf(3), -1);
         });
         
         it("should not create groups containing a single file", function() {
