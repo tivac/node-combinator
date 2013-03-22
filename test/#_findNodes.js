@@ -87,11 +87,5 @@ describe("Combinator", function() {
                 assert(node.attribs.href.indexOf("nooga.com") > -1);
             });
         });
-        
-        it.only("should find nodes using scripting in their attributes", function() {
-            var paths = _paths("./test/_specimens/php/simple.php");
-            
-            console.log(paths); //TODO: REMOVE DEBUGGING
-        });
     });
 });
