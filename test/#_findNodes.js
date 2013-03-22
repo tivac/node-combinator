@@ -16,8 +16,6 @@ describe("Combinator", function() {
         _paths = function(file) {
             parser.parseComplete(fs.readFileSync(file, "utf8"));
             
-            console.log(require("util").inspect(handler.dom, null, null)); //TODO: REMOVE DEBUGGING
-            
             return combinator._findNodes(handler.dom);
         };
         
