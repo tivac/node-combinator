@@ -16,6 +16,8 @@ describe("Combinator", function() {
         _paths = function(file) {
             parser.parseComplete(fs.readFileSync(file, "utf8"));
             
+            console.log(require("util").inspect(handler.dom, null, null)); //TODO: REMOVE DEBUGGING
+            
             return combinator._findNodes(handler.dom);
         };
         
@@ -84,6 +86,12 @@ describe("Combinator", function() {
                 assert.equal(node.attribs.type, "text/css");
                 assert(node.attribs.href.indexOf("nooga.com") > -1);
             });
+        });
+        
+        it.only("should find nodes using scripting in their attributes", function() {
+            var paths = _paths("./test/_specimens/php/simple.php");
+            
+            console.log(paths); //TODO: REMOVE DEBUGGING
         });
     });
 });
