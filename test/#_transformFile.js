@@ -106,5 +106,20 @@ describe("Combinator", function() {
                 done();
             });
         });
+        
+        it("should group elements with odd path values", function(done) {
+             var combinator = new Combinator(
+                    Combinator.defaults({
+                        files : _lib.files("./test/_specimens/php/#transformFile-simple.php")
+                    })
+                );
+            
+            combinator.run(function(error, results) {
+                var text = results[0].text;
+                
+                assert(text.indexOf("<script src=\"/combo?fooga.js&/booga--startphp-- echo 'hi' --endphp--.js\"></script>") > -1);
+                done();
+            });
+        });
     });
 });
