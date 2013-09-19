@@ -45,7 +45,7 @@ describe("Combinator", function() {
                 assert.equal(typeof details.dom, "object");
                 assert(details.dom.length);
                 
-                assert.equal(details.dom[0].name, "!DOCTYPE");
+                assert.equal(details.dom[0].name, "!doctype");
                 assert.equal(details.dom[1].type, "text");
                 
                 done();
