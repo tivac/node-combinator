@@ -15,18 +15,18 @@
     },
     
     "dependencies" : {
-        "htmlparser2" : "3.3.x",
-        "wrench"      : "1.5.x",
-        "optimist"    : "0.6.x",
-        "traverse"    : "0.6.x",
-        "async"       : "0.2.x",
+        "async"       : "~0.2.9",
+        "htmlparser2" : "~3.3.0",
         "mkdirp"      : "0.3.x",
-        "parseUri"    : "1.2.x"
+        "optimist"    : "~0.6.0",
+        "parseUri"    : "1.2.x",
+        "traverse"    : "0.6.x",
+        "wrench"      : "~1.5.1"
     },
     
     "devDependencies" : {
-        "mocha"    : "1.13.x",
-        "istanbul" : "0.1.x"
+        "mocha"    : "~1.13.0",
+        "istanbul" : "~0.1.44"
     },
     
     "engine": {
