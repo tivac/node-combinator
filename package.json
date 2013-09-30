@@ -34,7 +34,7 @@
     },
     
     "scripts" : {
-        "test" : "istanbul test ./node_modules/mocha/bin/_mocha"
+        "test": "istanbul test --print both ./node_modules/mocha/bin/_mocha"
     },
     
     "keywords": [
