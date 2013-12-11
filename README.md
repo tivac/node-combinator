@@ -1,5 +1,6 @@
-node-combinator [![Build Status](https://travis-ci.org/tivac/node-combinator.png?branch=master)](https://travis-ci.org/tivac/node-combinator) [![NPM version](https://badge.fury.io/js/combinator.png)](http://badge.fury.io/js/combinator) [![Dependency Status](https://gemnasium.com/tivac/node-combinator.png)](https://gemnasium.com/tivac/node-combinator)
+node-combinator [![Build Status](https://travis-ci.org/tivac/node-combinator.png?branch=master)](https://travis-ci.org/tivac/node-combinator) [![NPM version](https://badge.fury.io/js/combinator.png)](http://badge.fury.io/js/combinator) [![Dependency Status](https://gemnasium.com/tivac/node-combinator.png)](https://gemnasium.com/tivac/node-combinator) [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/tivac/node-combinator/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 ===============
+
 Console script to find repeated &lt;script&gt; or &lt;link&gt; elements and streamline them into a single element using a combo handler
 
 Takes HTML that looks like this
