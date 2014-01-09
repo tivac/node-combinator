@@ -6,28 +6,24 @@
 var fs         = require("fs"),
     util       = require("util"),
     path       = require("path"),
+    log        = require("npmlog"),
     shell      = require("shelljs"),
     htmlparser = require("htmlparser2"),
-    Combinator = require("../lib/combinator.js"),
     optimist   = require("optimist")
         .usage("\nCombine multiple <script> & <link> tags into single combo-handled tags.\nUsage: $0")
         .options(require("../args.json")),
     
+    Combinator = require("../lib/combinator.js"),
+    
     _argv = optimist.argv,
 
-    _stdin, _done, _log;
+    _stdin, _done;
 
 if(_argv.help) {
     return optimist.showHelp();
 }
 
-_log = function(string) {
-    if(_argv.quiet) {
-        return;
-    }
-    
-    console.log(string);
-};
+log.level = _argv.quiet ? "error" : _argv.loglevel;
 
 _stdin = function() {
     var _text = "",
@@ -70,12 +66,13 @@ _done = function(error, results) {
     var root, output;
     
     if(error) {
-        console.error(util.inspect(error, null, null, true));
+        log.error(error);
         process.exit(1);
     }
     
+    // No output file specified, so just echo results
     if(!_argv.output) {
-        return console.log(JSON.stringify(results, null, 4));
+        return process.stdout.write(JSON.stringify(results, null, 4) + "\n");
     }
     
     root   = path.resolve(_argv.root);
@@ -97,21 +94,21 @@ _done = function(error, results) {
         //append suffix (may not exist)
         file = file.replace(ext, _argv.suffix + ext);
         
-        _log("Saving " + file);
+        log.info("Saving " + file);
         
         shell.mkdir("-p", path.dirname(file));
         
         fs.writeFile(file, details.text, function(err) {
             if(err) {
-                console.error("Unable to write " + file);
-                console.error(err);
+                log.error("Unable to write " + file);
+                log.error(err);
             }
         });
     });
 };
 
 if(!_argv.root) {
-    _log("No root, waiting for input");
+    log.info("No root, waiting for input");
     
     return _stdin();
 }

@@ -34,7 +34,7 @@ describe("Combinator", function() {
         });
         
         it("should write JSON to standard out if no output directory is defined", function(done) {
-             exec("node bin/cli.js -r test/specimens -q", function(error, stdout, stderr) {
+            exec("node bin/cli.js -r test/specimens -q", function(error, stdout, stderr) {
                 var json = JSON.parse(stdout);
                 
                 assert(json.length);

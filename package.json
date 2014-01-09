@@ -18,7 +18,8 @@
     "optimist": "~0.6.0",
     "parseUri": "1.2.x",
     "traverse": "0.6.x",
-    "shelljs": "~0.2.6"
+    "shelljs": "~0.2.6",
+    "npmlog": "0.0.6"
   },
   "devDependencies": {
     "mocha": "~1.16.2",
