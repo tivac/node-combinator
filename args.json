@@ -72,5 +72,11 @@
         "description" : "Filter which elements are included (regex)",
         "default"     : ".",
         "string"      : true
+    },
+    
+    "loglevel" : {
+        "description" : "Chattiness, one of: silly, verbose, info, http, warn, error, or silent"
+        "default"     : "info",
+        "string"      : true
     }
 }
