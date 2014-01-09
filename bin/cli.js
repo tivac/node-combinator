@@ -70,8 +70,9 @@ _done = function(error, results) {
         process.exit(1);
     }
     
+    // No output file specified, so just echo results
     if(!_argv.output) {
-        return log.error(JSON.stringify(results, null, 4));
+        return process.stdout.write(JSON.stringify(results, null, 4) + "\n");
     }
     
     root   = path.resolve(_argv.root);
