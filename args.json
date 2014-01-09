@@ -75,7 +75,7 @@
     },
     
     "loglevel" : {
-        "description" : "Chattiness, one of: silly, verbose, info, http, warn, error, or silent"
+        "description" : "Chattiness, one of: silly, verbose, info, http, warn, error, or silent",
         "default"     : "info",
         "string"      : true
     }
