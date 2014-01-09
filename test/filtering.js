@@ -4,7 +4,6 @@
 "use strict";
 
 var assert     = require("assert"),
-    path       = require("path"),
     Combinator = require("../lib/combinator.js");
 
 describe("Combinator", function() {
@@ -16,7 +15,7 @@ describe("Combinator", function() {
                     })
                 ),
                 paths = combinator._findFilePaths();
-
+            
             assert(paths);
             assert(paths.length);
             assert(paths.length > 0);
@@ -27,12 +26,11 @@ describe("Combinator", function() {
                     Combinator.defaults({
                         root : "./test/_specimens/html"
                     })
-                );
+                ),
+                paths = combinator._findFilePaths();
 
-            assert(combinator._findFilePaths().indexOf(path.join("test", "_specimens", "html", "sub", "sub.html")) > -1);
+            assert(paths.indexOf("test/_specimens/html/sub/sub.html") > -1);
         });
-        
-        
     });
 
     describe("#_filterFile", function() {
@@ -46,7 +44,7 @@ describe("Combinator", function() {
                 paths = combinator._findFilePaths();
             
             assert(paths.length === 1);
-            assert.strictEqual(paths[0], path.join("test", "_specimens", "html", "ignore.html"));
+            assert.strictEqual(paths[0], "test/_specimens/html/ignore.html");
         });
         
         it("should only find files matching the extension filter", function() {
