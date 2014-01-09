@@ -3,7 +3,7 @@
 "use strict";
 
 var fs         = require("fs"),
-    wrench     = require("wrench"),
+    shell      = require("shelljs"),
     htmlparser = require("htmlparser2");
 
 module.exports = {
@@ -31,10 +31,10 @@ module.exports = {
     },
     
     setupSpecimens : function() {
-        wrench.copyDirSyncRecursive("./test/_specimens", "./test/specimens");
+        shell.cp("-rf", "./test/_specimens/*", "./test/specimens");
     },
     
     removeSpecimens : function() {
-        wrench.rmdirSyncRecursive("./test/specimens");
+        shell.rm("-rf", "./test/specimens/*");
     }
 };

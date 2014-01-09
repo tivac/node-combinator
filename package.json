@@ -1,45 +1,38 @@
 {
-    "name"          : "combinator",
-    "version"       : "0.1.7",
-    "description"   : "Find multiple concurrent <script> or <link> tags and turn 'em into single, combo-handled tags",
-    "preferGlobal"  : true,
-    "author"        : "Pat Cavit <pcavit@gmail.com",
-    "bugs"          : "https://github.com/tivac/node-combinator/issues",
-    "bin"           : "./bin/cli.js",
-    "main"          : "./lib/combinator.js",
-    "license"       : "MIT",
-    
-    "repository": {
-        "type" : "git",
-        "url"  : "https://github.com/tivac/node-combinator.git"
-    },
-    
-    "dependencies" : {
-        "async"       : "~0.2.9",
-        "htmlparser2" : "~3.3.0",
-        "mkdirp"      : "0.3.x",
-        "optimist"    : "~0.6.0",
-        "parseUri"    : "1.2.x",
-        "traverse"    : "0.6.x",
-        "wrench"      : "~1.5.1"
-    },
-    
-    "devDependencies" : {
-        "mocha"    : "~1.13.0",
-        "istanbul" : "~0.1.44"
-    },
-    
-    "engine": {
-        "node": ">=0.8"
-    },
-    
-    "scripts" : {
-        "test": "istanbul test --print both ./node_modules/mocha/bin/_mocha"
-    },
-    
-    "keywords": [
-        "html",
-        "parsing",
-        "webperf"
-    ]
+  "name": "combinator",
+  "version": "0.1.7",
+  "description": "Find multiple concurrent <script> or <link> tags and turn 'em into single, combo-handled tags",
+  "preferGlobal": true,
+  "author": "Pat Cavit <pcavit@gmail.com",
+  "bugs": "https://github.com/tivac/node-combinator/issues",
+  "bin": "./bin/cli.js",
+  "main": "./lib/combinator.js",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tivac/node-combinator.git"
+  },
+  "dependencies": {
+    "async": "~0.2.9",
+    "htmlparser2": "~3.4.0",
+    "optimist": "~0.6.0",
+    "parseUri": "1.2.x",
+    "traverse": "0.6.x",
+    "shelljs": "~0.2.6"
+  },
+  "devDependencies": {
+    "mocha": "~1.16.2",
+    "istanbul": "~0.2.3"
+  },
+  "engine": {
+    "node": ">=0.8"
+  },
+  "scripts": {
+    "test": "istanbul test --print both ./node_modules/mocha/bin/_mocha"
+  },
+  "keywords": [
+    "html",
+    "parsing",
+    "webperf"
+  ]
 }

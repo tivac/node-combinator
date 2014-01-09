@@ -6,7 +6,7 @@
 var fs         = require("fs"),
     util       = require("util"),
     path       = require("path"),
-    mkdirp     = require("mkdirp"),
+    shell      = require("shelljs"),
     htmlparser = require("htmlparser2"),
     Combinator = require("../lib/combinator.js"),
     optimist   = require("optimist")
@@ -81,7 +81,7 @@ _done = function(error, results) {
     root   = path.resolve(_argv.root);
     output = path.resolve(_argv.output);
     
-    mkdirp.sync(output);
+    shell.mkdir("-p", output);
     
     results.forEach(function(details) {
         var file = path.resolve(details.file),
@@ -99,7 +99,7 @@ _done = function(error, results) {
         
         _log("Saving " + file);
         
-        mkdirp.sync(path.dirname(file));
+        shell.mkdir("-p", path.dirname(file));
         
         fs.writeFile(file, details.text, function(err) {
             if(err) {
