@@ -1,6 +1,6 @@
 {
   "name": "combinator",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Find multiple concurrent <script> or <link> tags and turn 'em into single, combo-handled tags",
   "preferGlobal": true,
   "author": "Pat Cavit <pcavit@gmail.com",
