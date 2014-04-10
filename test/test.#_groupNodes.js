@@ -26,20 +26,18 @@ describe("Combinator", function() {
             };
         });
         
-        it.only("should group css modules according to their domain", function() {
-            console.log(groups.css); //TODO: REMOVE DEBUGGING
-
+        it("should group css modules according to their domain", function() {
             assert.equal(Object.keys(groups.css).length, 3);
             
-            assert(groups.css["2/childrennooga.com"]);
-            assert(groups.css["2/childrentooga.com"]);
+            assert(groups.css["2/children/nooga.com"]);
+            assert(groups.css["2/children/tooga.com"]);
         });
         
         it("should group js modules according to their domain", function() {
             assert.equal(Object.keys(groups.js).length, 3);
 
-            assert(groups.js["4/childrenwww.yooga.com"]);
-            assert(groups.js["4/childrenxooga.com"]);
+            assert(groups.js["4/children/www.yooga.com"]);
+            assert(groups.js["4/children/xooga.com"]);
         });
         
         it("should group elements separated by a text node", function() {
