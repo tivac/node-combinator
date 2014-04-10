@@ -16,7 +16,6 @@
     "async": "~0.7.0",
     "htmlparser2": "~3.7.1",
     "optimist": "~0.6.0",
-    "parseUri": "1.2.x",
     "traverse": "0.6.x",
     "shelljs": "~0.2.6",
     "npmlog": "0.0.6"
