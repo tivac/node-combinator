@@ -1,9 +1,9 @@
 node-combinator
 ===============
-[![Build Status](https://travis-ci.org/tivac/node-combinator.png?branch=master)](https://travis-ci.org/tivac/node-combinator)
-[![NPM version](https://badge.fury.io/js/combinator.png)](http://badge.fury.io/js/combinator)
-[![Dependency Status](https://david-dm.org/tivac/node-combinator.png?theme=shields.io)](https://david-dm.org/tivac/node-combinator)
-[![devDependency Status](https://david-dm.org/tivac/node-combinator/dev-status.png?theme=shields.io)](https://david-dm.org/tivac/node-combinator#info=devDependencies)
+[![Build Status](https://travis-ci.org/tivac/node-combinator.svg?branch=master)](https://travis-ci.org/tivac/node-combinator)
+[![NPM version](https://badge.fury.io/js/combinator.svg)](http://badge.fury.io/js/combinator)
+[![Dependency Status](https://david-dm.org/tivac/node-combinator.svg?theme=shields.io)](https://david-dm.org/tivac/node-combinator)
+[![devDependency Status](https://david-dm.org/tivac/node-combinator/dev-status.svg?theme=shields.io)](https://david-dm.org/tivac/node-combinator#info=devDependencies)
 
 
 Console script to find repeated `<script>` or `<link>` elements and streamline them into a single element using a combo handler
