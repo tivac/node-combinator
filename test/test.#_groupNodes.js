@@ -26,7 +26,9 @@ describe("Combinator", function() {
             };
         });
         
-        it("should group css modules according to their domain", function() {
+        it.only("should group css modules according to their domain", function() {
+            console.log(groups.css); //TODO: REMOVE DEBUGGING
+
             assert.equal(Object.keys(groups.css).length, 3);
             
             assert(groups.css["2/childrennooga.com"]);
