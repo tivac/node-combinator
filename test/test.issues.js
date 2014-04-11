@@ -31,7 +31,26 @@ describe("Combinator", function() {
                 done();
             });
         });
-
     });
 
+    describe("Issue 14", function() {
+        it("should properly combine absolute paths without a protocol", function(done) {
+            var combinator = new Combinator(
+                    Combinator.defaults({
+                        files : _lib.files("./test/_specimens/issues/issue-14.html")
+                    })
+                );
+            
+            combinator.run(function(error, results) {
+                var text = results[0].text;
+                
+                assert.equal(
+                    text,
+                    "<script src=\"//www.yooga.com/combo?/wooga/nooga/pooga.js&/rooga/tooga/kooga.js\"></script>\n"
+                );
+                
+                done();
+            });
+        });
+    });
 });
