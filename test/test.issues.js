@@ -53,4 +53,26 @@ describe("Combinator", function() {
             });
         });
     });
+
+    describe("Issue 16", function() {
+        it("shouldn't inject an extra \":\" after the protocol", function(done) {
+            var combinator = new Combinator(
+                    Combinator.defaults({
+                        files : _lib.files("./test/_specimens/issues/issue-16.html")
+                    })
+                );
+            
+            combinator.run(function(error, results) {
+                var text = results[0].text;
+                
+                assert.equal(
+                    text,
+                    "<script src=\"https://www.tooga.com/combo?/wooga/nooga/pooga.js&/rooga/tooga/kooga.js\"></script>\n"
+                );
+                
+                done();
+            });
+        });
+    });
+
 });
