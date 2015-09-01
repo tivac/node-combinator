@@ -1,6 +1,3 @@
-/*jshint node:true */
-/*global describe, before, it */
-
 "use strict";
 
 var assert     = require("assert"),

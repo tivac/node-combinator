@@ -1,13 +1,9 @@
-/*jshint node:true */
-/*global describe, it, before, after */
-
 "use strict";
 
 var assert = require("assert"),
     Combinator = require("../lib/combinator.js"),
     
     _lib = require("./_lib.js");
-
 
 describe("Combinator", function() {
     describe("#_transformFile", function() {
