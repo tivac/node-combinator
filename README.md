@@ -47,22 +47,19 @@ saving HTTP requests, bytes over the wire, and possibly your sanity (unlikely).
 
 ## Usage ##
 
-    node-combinator -r tests\data
+    combinator -f index.html
     
 ## Programmatic Usage ##
 
 ```javascript
 var Combinator = require("combinator"),
     combinator = new Combinator({
-        root : ".",
-        ...
-        /*
-         * you'll probably want to manually pass optimist your desired args & then
-         * have it parse args.json so all the defaults are sane. I'll fix that later I geuss.
-         */
+        src : "<!DOCTYPE html>"
     });
     
-combinator.run();
+combinator.run(function(error, html) {
+    // html is optimized output
+});
 ```
 
 ## Development ##

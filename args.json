@@ -4,17 +4,18 @@
         "description" : "Display usage information"
     },
     
-    "root" : {
-        "alias"       : "r",
-        "description" : "Root directory to search for files",
-        "string"      : true
-    },
-    
     "quiet" : {
         "alias"       : "q",
         "description" : "Minimal output",
         "default"     : false,
         "boolean"     : true
+    },
+
+    "file" : {
+        "alias"       : "f",
+        "description" : "File to process",
+        "default"     : "",
+        "string"      : true
     },
 
     "combo" : {
@@ -37,25 +38,6 @@
         "string"      : true
     },
 
-    "file-filter" : {
-        "alias"       : "f",
-        "description" : "File-name filter (regex)",
-        "default"     : ".",
-        "string"      : true
-    },
-    
-    "output" : {
-        "alias"       : "o",
-        "description" : "Location to save modified files to",
-        "default"     : false
-    },
-    
-    "recurse" : {
-        "description" : "Search directories recursively",
-        "default"     : true,
-        "boolean"     : true
-    },
-
     "separator" : {
         "description" : "String used to split combo files",
         "default"     : "&",
@@ -75,7 +57,7 @@
     },
     
     "loglevel" : {
-        "description" : "Chattiness, one of: silly, verbose, info, http, warn, error, or silent",
+        "description" : "Chattiness",
         "default"     : "info",
         "string"      : true
     }

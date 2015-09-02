@@ -13,16 +13,17 @@
     "url": "https://github.com/tivac/node-combinator.git"
   },
   "dependencies": {
-    "async": "~0.7.0",
-    "htmlparser2": "~3.7.1",
+    "async": "^1.4.2",
+    "concat-stream": "^1.5.0",
+    "htmlparser2": "^3.8.3",
+    "npmlog": "^1.2.1",
     "optimist": "~0.6.0",
-    "traverse": "0.6.x",
-    "shelljs": "~0.2.6",
-    "npmlog": "0.0.6"
+    "shelljs": "^0.5.3",
+    "traverse": "0.6.x"
   },
   "devDependencies": {
-    "mocha": "~1.18.2",
-    "istanbul": "~0.2.3"
+    "istanbul": "~0.2.3",
+    "mocha": "^2.3.0"
   },
   "engine": {
     "node": ">=0.8"
