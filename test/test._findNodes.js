@@ -20,7 +20,7 @@ describe("Combinator", function() {
             handler = new htmlparser.DomHandler(),
             parser  = new htmlparser.Parser(handler);
             
-            combinator = new Combinator(Combinator.defaults());
+            combinator = new Combinator({ file : "fooga wooga" });
         });
         
         it("should find <link> & <script> elements", function() {
@@ -66,7 +66,7 @@ describe("Combinator", function() {
             
             parser.parseComplete(fs.readFileSync("./test/_specimens/html/domains.html", "utf8"));
             
-            combinator = new Combinator(Combinator.defaults({ "url-filter" : "nooga\\.com" }));
+            combinator = new Combinator({ file : "fooga", "url-filter" : "nooga\\.com" });
             paths = combinator._findNodes(handler.dom);
             
             tdom  = traverse(handler.dom);

@@ -1,26 +1,33 @@
 "use strict";
 
-var assert = require("assert"),
-    Combinator = require("../lib/combinator.js"),
+var fs     = require("fs"),
+    assert = require("assert"),
     
-    _lib = require("./_lib.js");
-
+    Combinator = require("../lib/combinator");
 
 describe("Combinator", function() {
     describe("#_groupNodes", function() {
-        var files = _lib.files("./test/_specimens/html/domains.html"),
-            combinator, paths, groups;
+        var domains = fs.readFileSync("./test/_specimens/html/domains.html", "utf8"),
+            paths, groups;
         
         //all of these tests use the same HTML
-        before(function() {
-            combinator = new Combinator(Combinator.defaults({ files : files }));
+        before(function(done) {
+            var combinator = new Combinator({ file : domains });
             
-            paths = combinator._findNodes(files[0].dom);
-            
-            groups = {
-                js  : combinator._groupNodes(paths.js,  files[0].dom),
-                css : combinator._groupNodes(paths.css, files[0].dom)
-            };
+            combinator._parseFile(domains, function(error, result) {
+                if(error) {
+                    return done(error);
+                }
+
+                paths = combinator._findNodes(result.dom);
+                
+                groups = {
+                    js  : combinator._groupNodes(paths.js,  result.dom),
+                    css : combinator._groupNodes(paths.css, result.dom)
+                };
+
+                done();
+            });
         });
         
         it("should group css modules according to their domain", function() {

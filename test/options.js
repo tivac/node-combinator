@@ -6,6 +6,6 @@ var assert = require("assert"),
 
 describe("Combinator", function() {
     describe("Options", function() {
-        it("should do something, eventually");
+        it.skip("should do something, eventually");
     });
 });
