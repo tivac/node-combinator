@@ -62,14 +62,15 @@ describe("Combinator", function() {
         });
     });
 
-    describe.only("Issue 20", function() {
+    describe("Issue 20", function() {
         it("should not group over comments", function(done) {
             var combinator = new Combinator({
                     src : fs.readFileSync("./test/_specimens/issues/issue-20.html", "utf8")
                 });
             
             combinator.run(function(error, text) {
-                //console.log(text); // TODO: REMOVE DEBUGGING
+                assert(text.indexOf("<link rel=\"stylesheet\" href=\"/combo?/fooga.css&/wooga.css\">") > -1);
+                assert(text.indexOf("<link rel=\"stylesheet\" href=\"/combo?/tooga.css&/rooga.css\">") > -1);
 
                 done();
             });
