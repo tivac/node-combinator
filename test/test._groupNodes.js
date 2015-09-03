@@ -2,13 +2,14 @@
 
 var fs     = require("fs"),
     assert = require("assert"),
+    each   = require("foreach"),
     
     Combinator = require("../lib/combinator");
 
 describe("Combinator", function() {
     describe("#_groupNodes", function() {
         var domains = fs.readFileSync("./test/_specimens/html/domains.html", "utf8"),
-            paths, groups;
+            paths, types;
         
         //all of these tests use the same HTML
         before(function(done) {
@@ -21,7 +22,7 @@ describe("Combinator", function() {
 
                 paths = combinator._findNodes(result.dom);
                 
-                groups = {
+                types = {
                     js  : combinator._groupNodes(paths.js,  result.dom),
                     css : combinator._groupNodes(paths.css, result.dom)
                 };
@@ -31,42 +32,38 @@ describe("Combinator", function() {
         });
         
         it("should group css modules according to their domain", function() {
-            assert.equal(Object.keys(groups.css).length, 3);
+            assert.equal(Object.keys(types.css).length, 3);
             
-            assert(groups.css["2/children/nooga.com"]);
-            assert(groups.css["2/children/tooga.com"]);
+            assert(types.css["2/children/nooga.com"]);
+            assert(types.css["2/children/tooga.com"]);
         });
         
         it("should group js modules according to their domain", function() {
-            assert.equal(Object.keys(groups.js).length, 3);
+            assert.equal(Object.keys(types.js).length, 3);
 
-            assert(groups.js["4/children/www.yooga.com"]);
-            assert(groups.js["4/children/xooga.com"]);
+            assert(types.js["4/children/www.yooga.com"]);
+            assert(types.js["4/children/xooga.com"]);
         });
         
         it("should group elements separated by a text node", function() {
-            assert(groups.css["2/children"].paths.indexOf(3) > -1);
-            assert(groups.css["2/children"].paths.indexOf(5) > -1);
-            
-            assert(groups.js["4/children"].paths.indexOf(7) > -1);
-            assert(groups.js["4/children"].paths.indexOf(9) > -1);
+            assert.deepEqual(types.css["2/children"].chunks[0], [ 3, 5 ]);
+            assert.deepEqual(types.js["4/children"].chunks[0], [ 7, 9 ]);
         });
         
         it("should not group elements separated by anything else", function() {
-            assert.equal(groups.css["2/children"].paths.indexOf(7), -1);
+            assert.deepEqual(types.css["2/children"].chunks[0], [ 3, 5 ]);
             
-            assert.equal(groups.js["4/children"].paths.indexOf(3), -1);
+            assert.deepEqual(types.js["4/children"].chunks[0], [ 7, 9 ]);
         });
         
         it("should not create groups containing a single file", function() {
-            var type,
-                group;
-            
-            for(type in groups) {
-                for(group in groups[type]) {
-                    assert(groups[type][group].paths.length > 1);
-                }
-            }
+            each(types, function(groups, type) {
+                each(groups, function(group, name) {
+                    group.chunks.forEach(function(chunk) {
+                        assert(chunk.length > 1);
+                    });
+                });
+            });
         });
     });
 });
