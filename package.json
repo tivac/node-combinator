@@ -15,6 +15,8 @@
   "dependencies": {
     "async": "^1.4.2",
     "concat-stream": "^1.5.0",
+    "escape-string-regexp": "^1.0.3",
+    "foreach": "^2.0.5",
     "htmlparser2": "^3.8.3",
     "npmlog": "^1.2.1",
     "optimist": "~0.6.0",

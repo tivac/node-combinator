@@ -12,7 +12,6 @@ var fs     = require("fs"),
 
 describe("Combinator", function() {
     describe("Issue 11", function() {
-        
         it("shouldn't treat the first segment of non-absolute relative paths as a domain", function(done) {
             var combinator = new Combinator({
                     src : fs.readFileSync("./test/_specimens/issues/issue-11.html", "utf8")
@@ -63,4 +62,17 @@ describe("Combinator", function() {
         });
     });
 
+    describe.only("Issue 20", function() {
+        it("should not group over comments", function(done) {
+            var combinator = new Combinator({
+                    src : fs.readFileSync("./test/_specimens/issues/issue-20.html", "utf8")
+                });
+            
+            combinator.run(function(error, text) {
+                //console.log(text); // TODO: REMOVE DEBUGGING
+
+                done();
+            });
+        });
+    });
 });
