@@ -13,7 +13,7 @@
     "url": "https://github.com/tivac/node-combinator.git"
   },
   "dependencies": {
-    "async": "^1.5.1",
+    "async": "^2.0.0",
     "concat-stream": "^1.5.0",
     "escape-string-regexp": "^1.0.3",
     "foreach": "^2.0.5",
