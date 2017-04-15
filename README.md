@@ -69,3 +69,7 @@ To install from a clone of the source:
     git clone git://github.com/tivac/node-combinator.git
     cd node-combinator
     npm link
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/tivac/node-combinator/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
