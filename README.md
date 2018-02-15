@@ -5,6 +5,7 @@ node-combinator
 [![Dependency Status](https://david-dm.org/tivac/node-combinator.svg?theme=shields.io)](https://david-dm.org/tivac/node-combinator)
 [![devDependency Status](https://david-dm.org/tivac/node-combinator/dev-status.svg?theme=shields.io)](https://david-dm.org/tivac/node-combinator#info=devDependencies)
 
+## :warning: :zap: :warning: This project is UNMAINTAINED :warning: :zap: :warning:
 
 Console script to find repeated `<script>` or `<link>` elements and streamline them into a single element using a combo handler
 
